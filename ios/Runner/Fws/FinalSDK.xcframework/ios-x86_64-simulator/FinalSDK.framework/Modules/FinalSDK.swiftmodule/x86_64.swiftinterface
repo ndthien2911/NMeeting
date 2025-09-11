@@ -1,0 +1,30 @@
+// swift-interface-format-version: 1.0
+// swift-compiler-version: Apple Swift version 5.5.2 effective-4.2 (swiftlang-1300.0.47.5 clang-1300.0.29.30)
+// swift-module-flags: -target x86_64-apple-ios9.0-simulator -enable-objc-interop -enable-library-evolution -swift-version 4.2 -enforce-exclusivity=checked -Onone -module-name FinalSDK
+@_exported import FinalSDK
+import Swift
+import UIKit
+import _Concurrency
+@_inheritsConvenienceInitializers @objc @_Concurrency.MainActor(unsafe) open class ProgressingDashedLineCircleView : UIKit.UIView {
+  @objc @_Concurrency.MainActor(unsafe) public var heightView: CoreGraphics.CGFloat
+  @objc @_Concurrency.MainActor(unsafe) public var isVersionPro2D: Swift.Bool
+  @objc @_Concurrency.MainActor(unsafe) public var colorCircle: UIKit.UIColor
+  @objc @_Concurrency.MainActor(unsafe) public var maxValue: Swift.Double
+  @objc @_Concurrency.MainActor(unsafe) public var startAngle: Swift.Double
+  @objc @_Concurrency.MainActor(unsafe) public var endAngle: Swift.Double
+  @objc @_Concurrency.MainActor(unsafe) public var percent: Swift.Double
+  @objc @_Concurrency.MainActor(unsafe) public var endAngleValue: Swift.Double
+  @objc @_Concurrency.MainActor(unsafe) public var isRollBack: Swift.Bool
+  @objc @_Concurrency.MainActor(unsafe) public var value: Swift.Double {
+    @objc get
+    @objc set
+  }
+  @objc @_Concurrency.MainActor(unsafe) public func convertToRadian(degree: Swift.Double) -> Swift.Double
+  @objc @_Concurrency.MainActor(unsafe) public func reset()
+  @objc @_Concurrency.MainActor(unsafe) public func rollBack()
+  @objc @_Concurrency.MainActor(unsafe) public func drawDhashedLineCircle()
+  @objc @_Concurrency.MainActor(unsafe) public func addMartToMiddleView(margin: CoreGraphics.CGFloat)
+  @_Concurrency.MainActor(unsafe) @objc override dynamic public init(frame: CoreGraphics.CGRect)
+  @_Concurrency.MainActor(unsafe) @objc required dynamic public init?(coder: Foundation.NSCoder)
+  @objc deinit
+}

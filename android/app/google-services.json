@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "200725545645",
+    "project_id": "csdl-vrg",
+    "storage_bucket": "csdl-vrg.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:200725545645:android:1ee56d273b26b95a86bc24",
+        "android_client_info": {
+          "package_name": "vn.vnpthcm.nmeeting"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAmi7zzaU5pbM_C0DmDWXL_wZ5if98jEOI"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

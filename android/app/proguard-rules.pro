@@ -1,0 +1,7 @@
+-keep class com.shockwave.** { *; }
+-keep class ai.icenter.face3d.native_lib.Face3DConfig { *; }
+-keep class com.pichillilorenzo.flutter_inappwebview.** { *; }
+-dontwarn org.conscrypt.Conscrypt$ProviderBuilder
+-dontwarn org.conscrypt.Conscrypt
+-dontwarn org.joda.convert.FromString
+-dontwarn org.joda.convert.ToString
