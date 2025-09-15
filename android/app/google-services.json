@@ -1,26 +1,44 @@
 {
   "project_info": {
-    "project_number": "200725545645",
-    "project_id": "csdl-vrg",
-    "storage_bucket": "csdl-vrg.firebasestorage.app"
+    "project_number": "337809403766",
+    "project_id": "n-meeting-90b21",
+    "storage_bucket": "n-meeting-90b21.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:200725545645:android:1ee56d273b26b95a86bc24",
+        "mobilesdk_app_id": "1:337809403766:android:044276a7883724fd031457",
         "android_client_info": {
           "package_name": "vn.vnpthcm.nmeeting"
         }
       },
-      "oauth_client": [],
+      "oauth_client": [
+        {
+          "client_id": "337809403766-ivtcfvuki30f0ff8nnn0d7f2ohvl3lk9.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "vn.vnpthcm.nmeeting",
+            "certificate_hash": "b3bbdf46c195a0c6bc17fac3cc39cad07939fa0d"
+          }
+        },
+        {
+          "client_id": "337809403766-cocllncfl18i3m3oqk876l7d4kit8iae.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
       "api_key": [
         {
-          "current_key": "AIzaSyAmi7zzaU5pbM_C0DmDWXL_wZ5if98jEOI"
+          "current_key": "AIzaSyCGR7BjT2OY5vKHFK6Nz_oxw9RDC0IGpsA"
         }
       ],
       "services": {
         "appinvite_service": {
-          "other_platform_oauth_client": []
+          "other_platform_oauth_client": [
+            {
+              "client_id": "337809403766-cocllncfl18i3m3oqk876l7d4kit8iae.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
         }
       }
     }

@@ -62,7 +62,7 @@ android {
 
     defaultConfig {
         // TODO: Specify your own unique Application ID (https://developer.android.com/studio/build/application-id.html).
-        // https://appstore.hcmtelecom.vn/ttcntt/csdltonghopvrg.html
+        // https://appstore.hcmtelecom.vn/ttcntt/nmeeting.html
         applicationId "vn.vnpthcm.nmeeting"
 
         minSdkVersion 24

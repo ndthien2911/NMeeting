@@ -39,8 +39,8 @@
         </intent>
     </queries>
 
-    <!-- https://appstore.hcmtelecom.vn/ttcntt/csdltonghopvrg.html -->
-    <!-- CSDL Tổng hợp - VRG -->
+    <!-- https://appstore.hcmtelecom.vn/ttcntt/nmeeting.html -->
+    <!-- N-Meeting -->
     <application
         android:label="N-Meeting"
         tools:replace="android:label"

@@ -3,11 +3,11 @@ description: vn.vnpthcm.nmeeting
 
 # Flutter SDK: 3.27.4
 
-# https://appstore.hcmtelecom.vn/ttcntt/.html
-# Name: CSDL Tổng hợp - VRG
+# https://appstore.hcmtelecom.vn/ttcntt/nmeeting.html
+# Name: N-Meeting
 # Android: vn.vnpthcm.nmeeting
-# IOS: vn.vnpthcm.nmeeting
-# https://console.firebase.google.com/u/4/project/
+# IOS: vn.vnpthcm.nmeetingnoibo
+# https://console.firebase.google.com/u/4/project/n-meeting-90b21/overview
 # https://console.cloud.google.com/
 
 # The following line prevents the package from being accidentally published to
@@ -27,7 +27,7 @@ publish_to: "none" # Remove this line if you wish to publish to pub.dev
 version: 1.0.0+4
 
 environment:
-  sdk: ">=2.12.0 <3.0.0"
+  sdk: ">=2.17.0 <4.0.0"
 
 dependencies:
   flutter:
@@ -110,6 +110,7 @@ dependencies:
   speech_to_text: ^6.5.0
   dotted_border: ^2.1.0
   flutter_datetime_picker_plus: ^2.1.0
+  syncfusion_flutter_calendar: ^28.1.37
 
 dev_dependencies:
   flutter_test:
@@ -119,7 +120,7 @@ dev_dependencies:
 flutter_icons:
   android: "launcher_icon"
   ios: true
-  # https://appstore.hcmtelecom.vn/ttcntt/csdltonghopvrg.html
+  # https://appstore.hcmtelecom.vn/ttcntt/nmeeting.html
   image_path_android: "lib/assets/icons/android-app-icon.png"
   image_path_ios: "lib/assets/icons/ios-app-icon.png"
 
@@ -223,7 +224,7 @@ flutter_native_splash:
 
   # The image parameter allows you to specify an image used in the splash screen.  It must be a 
   # png file and should be sized for 4x pixel density.
-  # https://appstore.hcmtelecom.vn/ttcntt/csdltonghopvrg.html
+  # https://appstore.hcmtelecom.vn/ttcntt/nmeeting.html
   image: lib/assets/images/splash.png
 
   # The color_dark, background_image_dark, and image_dark are parameters that set the background

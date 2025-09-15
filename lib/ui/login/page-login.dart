@@ -1,5 +1,6 @@
 import 'dart:io';
 
+import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:nmeeting/base/platform-info.dart';
 import 'package:nmeeting/bloc/loginBloc.dart';
 import 'package:nmeeting/bloc/configBloc.dart';
@@ -44,7 +45,22 @@ class _PageLoginState extends State<PageLogin> {
     String imeicode = PlatformInfo.getDeviceId();
     _loginBloc.onSetIMEICode(imeicode);
     _clearPrefs();
+    getToken();
     _configBloc.getUnitUsed();
+  }
+
+  getToken() async {
+    await FirebaseMessaging.instance.requestPermission(
+      alert: true,
+      badge: true,
+      provisional: false,
+      sound: true,
+    );
+
+    FirebaseMessaging.instance.getToken().then((value) async {
+      print('firebaseMessaging.getToken: ' + value!);
+      _loginBloc.onSetTokenDevice(value);
+    });
   }
 
   _clearPrefs() async {

@@ -2,20 +2,24 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
+	<key>CLIENT_ID</key>
+	<string>337809403766-do1hjtjst0s40pros9bcjta8jpv0r4fv.apps.googleusercontent.com</string>
+	<key>REVERSED_CLIENT_ID</key>
+	<string>com.googleusercontent.apps.337809403766-do1hjtjst0s40pros9bcjta8jpv0r4fv</string>
 	<key>ANDROID_CLIENT_ID</key>
-	<string>302511150530-206bbe182s15me47h1mmdqh9eo0lhpjk.apps.googleusercontent.com</string>
+	<string>337809403766-ivtcfvuki30f0ff8nnn0d7f2ohvl3lk9.apps.googleusercontent.com</string>
 	<key>API_KEY</key>
-	<string>AIzaSyD4EV5hLXGTOzGBXCti2hUPJQnyywhfBmQ</string>
+	<string>AIzaSyDmLrCf_4FnyP8eIP5PaQlUiBNb_KNUeBM</string>
 	<key>GCM_SENDER_ID</key>
-	<string>302511150530</string>
+	<string>337809403766</string>
 	<key>PLIST_VERSION</key>
 	<string>1</string>
 	<key>BUNDLE_ID</key>
-	<string>vn.vnpthcm.mttqvnappstore</string>
+	<string>vn.vnpthcm.nmeetingnoibo</string>
 	<key>PROJECT_ID</key>
-	<string>daihoicongdoan-ab646</string>
+	<string>n-meeting-90b21</string>
 	<key>STORAGE_BUCKET</key>
-	<string>daihoicongdoan-ab646.appspot.com</string>
+	<string>n-meeting-90b21.appspot.com</string>
 	<key>IS_ADS_ENABLED</key>
 	<false></false>
 	<key>IS_ANALYTICS_ENABLED</key>
@@ -27,6 +31,6 @@
 	<key>IS_SIGNIN_ENABLED</key>
 	<true></true>
 	<key>GOOGLE_APP_ID</key>
-	<string>1:302511150530:ios:00269f6c90f0404eae725b</string>
+	<string>1:337809403766:ios:c31e578516f29edd031457</string>
 </dict>
 </plist>

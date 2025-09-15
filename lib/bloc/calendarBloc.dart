@@ -1,106 +1,129 @@
 import 'dart:async';
+import 'dart:convert';
 import 'package:nmeeting/base/base-bloc.dart';
+import 'package:nmeeting/models/calendar.dart';
 import 'package:nmeeting/models/t-result.dart';
 import 'package:nmeeting/repository/calendar-repository.dart';
+import 'package:rxdart/rxdart.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
-class UnitBloc extends BaseBloc {
-  final _unitRepository = UnitRepository();
+class CalendarBloc extends BaseBloc {
+  // repository
+  final _calendarRepository = CalendarRepository();
+  final _monthYearHeaderViewController = BehaviorSubject<String>();
+  Stream<String> get monthYearHeaderViewStream =>
+      _monthYearHeaderViewController.stream;
 
-  // Stream controller
-  final _unitListController = StreamController<List<UnitList>>.broadcast();
-  Stream<List<UnitList>> get unitListStream => _unitListController.stream;
+  setMonthYearHeaderView(String value) {
+    _monthYearHeaderViewController.sink.add(value);
+  }
 
-  // Original list
-  List<UnitList> originalUnitList = [];
-
-  // Load initial unit list from repository and set selection from shared prefs
-  Future<void> loadUnitList() async {
+  Future<TResult> getEventByMonth(
+      String from, String to, List<String> searchValue) async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
-    final personalID = prefs.getString('personalID') ?? '';
 
-    final response = await _unitRepository.getUnit(personalID);
-    if (response.status == 1 && response.data.isNotEmpty) {
-      originalUnitList = response.data;
+    final _eventByMonthInput = EventByMonthInput(
+        personalID: prefs.getString('personalID') ?? '',
+        eventFromDate: from,
+        eventToDate: to,
+        searchValue: jsonEncode(searchValue));
+    final _response =
+        await _calendarRepository.getEventByMonth(_eventByMonthInput);
 
-      // Lấy danh sách đã chọn từ SharedPreferences
-      List<String> savedSelected =
-          prefs.getStringList('calendar_searchValues') ?? [];
-
-      if (savedSelected.isNotEmpty) {
-        for (var unit in originalUnitList) {
-          unit.selected = savedSelected.contains(unit.id);
-        }
-      } else {
-        // Mặc định chọn item đầu tiên
-        originalUnitList[0].selected = true;
-      }
-
-      // Cập nhật stream
-      _unitListController.sink.add(originalUnitList);
-    }
+    return _response;
   }
 
-  // Toggle selection của unit theo index
-  void toggleUnitSelection(int index) async {
-    originalUnitList[index].selected = !originalUnitList[index].selected;
-
-    // Nếu không còn item nào được chọn, chọn lại item đầu tiên
-    if (!originalUnitList.any((unit) => unit.selected)) {
-      originalUnitList[0].selected = true;
-    }
-
-    // Cập nhật stream
-    _unitListController.sink.add(originalUnitList);
-
-    // Lưu danh sách đã chọn vào SharedPreferences
-    await _saveSelectedUnitsToPrefs();
-  }
-
-  // Lấy danh sách id của unit đã chọn
-  List<String> getSelectedUnitIds() {
-    return originalUnitList
-        .where((unit) => unit.selected)
-        .map((unit) => unit.id)
-        .toList();
-  }
-
-  // Lưu SharedPreferences
-  Future<void> _saveSelectedUnitsToPrefs() async {
+  Future<TResult> getEventByDay(String date, List<String> searchValue) async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
-    final selectedIds = getSelectedUnitIds();
-    await prefs.setStringList('calendar_searchValues', selectedIds);
+
+    final _eventByDayInput = EventByDayInput(
+        personalID: prefs.getString('personalID') ?? '',
+        eventDate: date,
+        searchValue: jsonEncode(searchValue));
+    final _response = await _calendarRepository.getEventByDay(_eventByDayInput);
+
+    return _response;
   }
 
   @override
   void dispose() {
-    _unitListController.close();
+    _monthYearHeaderViewController.close();
   }
 }
 
-// Model UnitList
-class UnitList {
-  final String id;
-  final String name;
-  bool selected;
+class UnitBloc extends BaseBloc {
+  final _unitRepository = UnitRepository();
+  final _unitListStreamController =
+      StreamController<List<UnitList>>.broadcast();
+  Stream<List<UnitList>> get unitListStream =>
+      _unitListStreamController.stream.asBroadcastStream();
 
-  UnitList({
-    required this.id,
-    required this.name,
-    this.selected = false,
-  });
+  List<UnitList> originalUnitList = [];
 
-  factory UnitList.fromJson(Map<String, dynamic> json) {
-    return UnitList(
-      id: json['ID'] ?? '',
-      name: json['Name'] ?? '',
-      selected: json['Selected'] ?? false,
-    );
+  setUnitListStreamController() {
+    //_unitListStreamController.sink.add([]);
+    _unitListStreamController.sink.add(originalUnitList);
   }
 
-  Map<String, dynamic> toJson() => {
-        'ID': id,
-        'Name': name,
-        'Selected': selected,
-      };
+  getUnitList() async {
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    final _response =
+        await _unitRepository.getUnit(prefs.getString('personalID') ?? '');
+    if (_response.status == 1) {
+      originalUnitList = _response.data;
+
+      List<String> listSelected =
+          prefs.getStringList('calendar_searchValues') ?? [];
+
+      if (listSelected.isNotEmpty) {
+        for (var i = 0; i < originalUnitList.length; i++) {
+          if (listSelected.contains(originalUnitList[i].id)) {
+            originalUnitList[i].selected = true;
+          }
+        }
+      } else {
+        if (originalUnitList.isNotEmpty) {
+          originalUnitList[0].selected = true;
+        }
+      }
+
+      _unitListStreamController.sink.add(originalUnitList);
+    }
+  }
+
+  updateSelectedUnitList(int index) {
+    originalUnitList[index].selected = !originalUnitList[index].selected!;
+
+    // if not selected any item, select first item in list
+    List<String> listSelected = getUnitListSelect();
+    if (listSelected.isEmpty) {
+      originalUnitList[0].selected = true;
+    }
+
+    _unitListStreamController.sink.add(originalUnitList);
+
+    List<String> idSelected = originalUnitList
+        .where((element) => element.selected == true)
+        .map((e) => e.id!)
+        .toList();
+    setSearchValuesSelectedSharedPreferences(idSelected);
+  }
+
+  List<String> getUnitListSelect() {
+    setUnitListStreamController();
+    return originalUnitList
+        .where((element) => element.selected == true)
+        .map((e) => e.id!)
+        .toList();
+  }
+
+  setSearchValuesSelectedSharedPreferences(List<String> values) async {
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    prefs.setStringList('calendar_searchValues', values);
+  }
+
+  @override
+  void dispose() {
+    _unitListStreamController.close();
+  }
 }

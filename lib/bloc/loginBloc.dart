@@ -44,21 +44,23 @@ class LoginBloc extends BaseBloc {
   }
 
   onGetTokenDevice() {
-    return _tokenDeviceController.value;
+    return _tokenDeviceController.hasValue ? _tokenDeviceController.value : '';
   }
 
   onGetIMEICode() {
-    return _iMEICodeController.value;
+    return _iMEICodeController.hasValue ? _iMEICodeController.value : '';
   }
 
   bool isValidInput() {
     bool _isValid = true;
-    if (StringUtils.isNullOrEmpty(_usernameController.value?.trim())) {
+    if (!_usernameController.hasValue ||
+        StringUtils.isNullOrEmpty(_usernameController.value)) {
       _usernameController.sink.addError('Vui lòng nhập tài khoản');
       _isValid = false;
     }
 
-    if (StringUtils.isNullOrEmpty(_passwordController.value?.trim())) {
+    if (!_passwordController.hasValue ||
+        StringUtils.isNullOrEmpty(_passwordController.value)) {
       _passwordController.sink.addError('Vui lòng nhập mật khẩu');
       _isValid = false;
     }
