@@ -381,57 +381,6 @@ class _PageCalendarState extends State<PageCalendar> {
       height: 80,
       child: Container(
         width: _widthTableCalendar,
-        // child: Padding(
-        //   padding: const EdgeInsets.only(top: 0),
-        //   child: tc.TableCalendar(
-        //     initialSelectedDay: _initialDisplayDate,
-        //     startingDayOfWeek: tc.StartingDayOfWeek.monday,
-        //     initialCalendarFormat: tc.CalendarFormat.week,
-        //     availableCalendarFormats: const {tc.CalendarFormat.week: 'Tuần'},
-        //     locale: 'vi_VN',
-        //     calendarController: _calendarController,
-        //     headerVisible: false,
-        //     calendarStyle: tc.CalendarStyle(
-        //       selectedColor: Colors.redAccent,
-        //       selectedStyle: TextStyle(
-        //           color: Colors.white,
-        //           fontSize: 22,
-        //           fontWeight: FontWeight.bold),
-        //       weekendStyle: TextStyle(
-        //           color: Colors.black,
-        //           fontSize: 22,
-        //           fontWeight: FontWeight.bold),
-        //       weekdayStyle:
-        //           TextStyle(fontSize: 22, fontWeight: FontWeight.bold),
-        //       outsideWeekendStyle: TextStyle(
-        //           color: Colors.black,
-        //           fontSize: 22,
-        //           fontWeight: FontWeight.bold),
-        //       outsideStyle:
-        //           TextStyle(fontSize: 22, fontWeight: FontWeight.bold),
-        //     ),
-        //     daysOfWeekStyle: tc.DaysOfWeekStyle(
-        //       weekendStyle: TextStyle(color: Colors.black87),
-        //     ),
-        //     onVisibleDaysChanged:
-        //         (DateTime dtFrom, DateTime dtTo, tc.CalendarFormat f) {
-        //       _initialDisplayDate = dtFrom;
-        //
-        //       _calendarBloc
-        //           .setMonthYearHeaderView(DateFormat('MM/yyyy').format(dtFrom));
-        //     },
-        //     onDaySelected: (DateTime dt, List<dynamic> list) {
-        //       setState(() {
-        //         _dateSeletedCurrent = dt;
-        //       });
-        //       _getEventByDay(dt);
-        //     },
-        //     onCalendarCreated:
-        //         (DateTime dt1, DateTime dt2, tc.CalendarFormat f) {
-        //       _getEventByDay(_initialDisplayDate);
-        //     },
-        //   ),
-        // ),
         child: Padding(
           padding: const EdgeInsets.only(top: 0),
           child: tc.TableCalendar(
@@ -439,60 +388,49 @@ class _PageCalendarState extends State<PageCalendar> {
             lastDay: DateTime.utc(2100, 12, 31),
             focusedDay: _initialDisplayDate,
             locale: 'vi_VN',
-
-            // chọn format hiển thị tuần
-            calendarFormat: tc.CalendarFormat.week,
-            availableCalendarFormats: const {
-              tc.CalendarFormat.week: 'Tuần',
-            },
-
-            // highlight ngày được chọn
-            selectedDayPredicate: (day) =>
-                tc.isSameDay(_dateSeletedCurrent, day),
-
             startingDayOfWeek: tc.StartingDayOfWeek.monday,
+            calendarFormat: tc.CalendarFormat.week,
             headerVisible: false,
-
             calendarStyle: tc.CalendarStyle(
               selectedDecoration: BoxDecoration(
                 color: Colors.redAccent,
                 shape: BoxShape.circle,
               ),
-              selectedTextStyle: const TextStyle(
+              selectedTextStyle: TextStyle(
                 color: Colors.white,
                 fontSize: 22,
                 fontWeight: FontWeight.bold,
               ),
-              weekendTextStyle: const TextStyle(
+              weekendTextStyle: TextStyle(
                 color: Colors.black,
                 fontSize: 22,
                 fontWeight: FontWeight.bold,
               ),
-              defaultTextStyle: const TextStyle(
+              defaultTextStyle: TextStyle(
                 fontSize: 22,
                 fontWeight: FontWeight.bold,
               ),
-              outsideTextStyle: const TextStyle(
-                color: Colors.black,
+              outsideTextStyle: TextStyle(
                 fontSize: 22,
                 fontWeight: FontWeight.bold,
               ),
             ),
-
-            daysOfWeekStyle: const tc.DaysOfWeekStyle(
+            daysOfWeekStyle: tc.DaysOfWeekStyle(
               weekendStyle: TextStyle(color: Colors.black87),
             ),
-
-            // thay cho onVisibleDaysChanged + onCalendarCreated
+            onFormatChanged: (format) {
+              // nếu bạn cần đổi format (tuần/tháng/ngày)
+              setState(() {});
+            },
             onPageChanged: (focusedDay) {
               _initialDisplayDate = focusedDay;
               _calendarBloc.setMonthYearHeaderView(
-                DateFormat('MM/yyyy').format(focusedDay),
-              );
-              _getEventByDay(_initialDisplayDate);
+                  DateFormat('MM/yyyy').format(focusedDay));
+              _getEventByDay(focusedDay);
             },
-
-            // chọn ngày
+            selectedDayPredicate: (day) {
+              return tc.isSameDay(_dateSeletedCurrent, day);
+            },
             onDaySelected: (selectedDay, focusedDay) {
               setState(() {
                 _dateSeletedCurrent = selectedDay;
