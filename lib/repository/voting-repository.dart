@@ -21,7 +21,9 @@ class VotingRepository {
     }
 
     return TResult(
-        status: response['Status'], data: _problems, msg: response['Msg']);
+        status: response['Status'],
+        data: _problems,
+        msg: response['Msg'] ?? '');
   }
 
   Future<TResult> getQuestionByProblemId(QuestionInput data) async {
@@ -39,7 +41,7 @@ class VotingRepository {
     return TResult(
         status: response['Status'],
         data: _questionOutput,
-        msg: response['Msg']);
+        msg: response['Msg'] ?? '');
   }
 
   Future<TResult> onAnwserSelected(AnwserInput data) async {
@@ -49,7 +51,7 @@ class VotingRepository {
     return TResult(
         status: response['Status'],
         data: response['Data'],
-        msg: response['Msg']);
+        msg: response['Msg'] ?? '');
   }
 
   Future<TResult> checkCompleteProblem(CompleteProblemInput data) async {
@@ -65,7 +67,7 @@ class VotingRepository {
     return TResult(
         status: response['Status'],
         data: _completeOutput,
-        msg: response['Msg']);
+        msg: response['Msg'] ?? '');
   }
 
   Future<TResult> checkAllowVoting(AllowInput data) async {
@@ -75,7 +77,7 @@ class VotingRepository {
     return TResult(
         status: response['Status'],
         data: response['Data'],
-        msg: response['Msg']);
+        msg: response['Msg'] ?? '');
   }
 
   Future<TResult> checkDeclareVoting(DeclareInput data) async {
@@ -85,7 +87,7 @@ class VotingRepository {
     return TResult(
         status: response['Status'],
         data: response['Data'],
-        msg: response['Msg']);
+        msg: response['Msg'] ?? '');
   }
 
   Future<TResult> getBQResultByProblemId(QuestionResultInput data) async {
@@ -106,7 +108,7 @@ class VotingRepository {
         questionResults: _questionOutput);
 
     return TResult(
-        status: response['Status'], data: _res, msg: response['Msg']);
+        status: response['Status'], data: _res, msg: response['Msg'] ?? '');
   }
 
   Future<TResult> getBCResultByProblemId(String problemId) async {
@@ -122,7 +124,9 @@ class VotingRepository {
     }
 
     return TResult(
-        status: response['Status'], data: _resultOutput, msg: response['Msg']);
+        status: response['Status'],
+        data: _resultOutput,
+        msg: response['Msg'] ?? '');
   }
 
   // admin
@@ -133,7 +137,7 @@ class VotingRepository {
     return TResult(
         status: response['Status'],
         data: response['Data'],
-        msg: response['Msg']);
+        msg: response['Msg'] ?? '');
   }
 
   Future<TResult> endVoting(AllowInput data) async {
@@ -143,7 +147,7 @@ class VotingRepository {
     return TResult(
         status: response['Status'],
         data: response['Data'],
-        msg: response['Msg']);
+        msg: response['Msg'] ?? '');
   }
 
   Future<IOWebSocketChannel> openProgressWebSocketChannel() async {

@@ -70,7 +70,7 @@ class _PageCalendarState extends State<PageCalendar> {
   //final _unitBloc = new UnitBloc();
 
   late CalendarDataSource _dataSourceMonth;
-  late CalendarDataSource _dataSourceDay;
+  CalendarDataSource _dataSourceDay = EventByDayDataSource([]);
 
   late DateTime _dateSeletedCurrent;
   late DateTime _dateSeletedFrom;
@@ -355,8 +355,8 @@ class _PageCalendarState extends State<PageCalendar> {
         appointmentTextStyle:
             TextStyle(fontSize: 13, fontWeight: FontWeight.bold),
         dataSource: _dataSourceDay,
-        minDate: _initialDayTimelineDisplayDate,
-        maxDate: _initialDayTimelineDisplayDate,
+        // minDate: _initialDayTimelineDisplayDate,
+        // maxDate: _initialDayTimelineDisplayDate,
         onTap: (CalendarTapDetails value) {
           if (value.targetElement == CalendarElement.appointment) {
             if (value.appointments![0].groupID ==

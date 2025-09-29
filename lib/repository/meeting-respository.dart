@@ -17,7 +17,7 @@ class MeetingRepository {
     return TResult(
         status: response['Status'],
         data: response['Data'],
-        msg: response['Msg']);
+        msg: response['Msg'] ?? '');
   }
 
   Future<TResult> checkUserHasCheckIn(CheckInInput data) async {
@@ -27,7 +27,7 @@ class MeetingRepository {
     return TResult(
         status: response['Status'],
         data: response['Data'],
-        msg: response['Msg']);
+        msg: response['Msg'] ?? '');
   }
 
   Future<TResult> isMeetingEnd(MeetingEndInput data) async {
@@ -37,7 +37,7 @@ class MeetingRepository {
     return TResult(
         status: response['Status'],
         data: response['Data'],
-        msg: response['Msg']);
+        msg: response['Msg'] ?? '');
   }
 
   Future<IOWebSocketChannel> wsCheckin() async {
@@ -60,7 +60,9 @@ class MeetingRepository {
     }
 
     final r = TResult(
-        status: response['Status'], data: _meetingUser, msg: response['Msg']);
+        status: response['Status'],
+        data: _meetingUser,
+        msg: response['Msg'] ?? '');
     return r;
   }
 
@@ -71,7 +73,7 @@ class MeetingRepository {
     final r = TResult(
         status: response['Status'],
         data: response['Data'],
-        msg: response['Msg']);
+        msg: response['Msg'] ?? '');
     return r;
   }
 
@@ -82,7 +84,7 @@ class MeetingRepository {
     return TResult(
         status: response['Status'],
         data: response['Data'],
-        msg: response['Msg']);
+        msg: response['Msg'] ?? '');
   }
 
   Future<TResult> checkRolePage(RoleInput data) async {
@@ -92,7 +94,7 @@ class MeetingRepository {
     return TResult(
         status: response['Status'],
         data: response['Data'],
-        msg: response['Msg']);
+        msg: response['Msg'] ?? '');
   }
 
   Future<TResult> createMeeting(MeetingObjRequest data) async {
@@ -102,7 +104,7 @@ class MeetingRepository {
     return TResult(
         status: response['Status'],
         data: response['Data'],
-        msg: response['Msg']);
+        msg: response['Msg'] ?? '');
   }
 
   Future<TResult> updateMeeting(MeetingObjRequest data) async {
@@ -112,7 +114,7 @@ class MeetingRepository {
     return TResult(
         status: response['Status'],
         data: response['Data'],
-        msg: response['Msg']);
+        msg: response['Msg'] ?? '');
   }
 
   Future<TResult> getMeetingById(String id) async {
@@ -152,7 +154,7 @@ class MeetingRepository {
     final r = TResult(
         status: response['Status'],
         data: _meetingObjInput,
-        msg: response['Msg']);
+        msg: response['Msg'] ?? '');
     return r;
   }
 
@@ -167,7 +169,7 @@ class MeetingRepository {
     }
 
     return TResult(
-        status: response['Status'], data: _accs, msg: response['Msg']);
+        status: response['Status'], data: _accs, msg: response['Msg'] ?? '');
   }
 
   Future<TResult> getUserList(UserMeetingInput data) async {
@@ -182,7 +184,9 @@ class MeetingRepository {
     }
 
     final r = TResult(
-        status: response['Status'], data: _meetingUser, msg: response['Msg']);
+        status: response['Status'],
+        data: _meetingUser,
+        msg: response['Msg'] ?? '');
     return r;
   }
 
@@ -193,7 +197,7 @@ class MeetingRepository {
     return TResult(
         status: response['Status'],
         data: response['Data'],
-        msg: response['Msg']);
+        msg: response['Msg'] ?? '');
   }
 
   Future<TResult> checkinByQRCode(QRScanInput data) async {
@@ -203,6 +207,6 @@ class MeetingRepository {
     return TResult(
         status: response['Status'],
         data: response['Data'],
-        msg: response['Msg']);
+        msg: response['Msg'] ?? '');
   }
 }

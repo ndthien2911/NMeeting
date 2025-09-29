@@ -24,7 +24,9 @@ class NotifyRepository {
     }
 
     return TResult(
-        status: response['Status'], data: _notifyRes, msg: response['Msg']);
+        status: response['Status'],
+        data: _notifyRes,
+        msg: response['Msg'] ?? '');
   }
 
   Future<TResult> countNotifyNotSeenWithPersonalID(String _personalID) async {
@@ -34,7 +36,7 @@ class NotifyRepository {
     return TResult(
         status: response['Status'],
         data: response['Data'],
-        msg: response['Msg']);
+        msg: response['Msg'] ?? '');
   }
 
   Future<TResult> getUsersByMeetingIDs(NotifyByMeetingIdsInput data) async {
@@ -44,7 +46,7 @@ class NotifyRepository {
     return TResult(
         status: response['Status'],
         data: response['Data'],
-        msg: response['Msg']);
+        msg: response['Msg'] ?? '');
   }
 
   Future<IOWebSocketChannel> openNotifyWebSocketChannel() async {

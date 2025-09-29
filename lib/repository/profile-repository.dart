@@ -32,7 +32,9 @@ class ProfileRepository {
     }
 
     final r = TResult(
-        status: response['Status'], data: _profileOutput, msg: response['Msg']);
+        status: response['Status'],
+        data: _profileOutput,
+        msg: response['Msg'] ?? '');
     return r;
   }
 
@@ -56,7 +58,7 @@ class ProfileRepository {
     final r = TResult(
         status: response['Status'],
         data: response['Data'],
-        msg: response['Msg']);
+        msg: response['Msg'] ?? '');
     return r;
   }
 
@@ -67,16 +69,18 @@ class ProfileRepository {
       final _data = response['Data'].cast<String, dynamic>();
       _profileOutput = ProfileBasicOutput(
           userName: _data['UserName'],
-          currentName: _data['CurrentName'],
-          avartaUrl: _data['AvatarUrl'],
-          email: _data['Email'],
+          currentName: _data['CurrentName'] ?? '',
+          avartaUrl: _data['AvatarUrl'] ?? '',
+          email: _data['Email'] ?? '',
           //gender: _data['Gender'],
-          phone: _data['Phone'],
-          birthDate: _data['BirthDate']);
+          phone: _data['Phone'] ?? '',
+          birthDate: _data['BirthDate'] ?? '');
     }
 
     final r = TResult(
-        status: response['Status'], data: _profileOutput, msg: response['Msg']);
+        status: response['Status'],
+        data: _profileOutput,
+        msg: response['Msg'] ?? '');
     return r;
   }
 
@@ -89,7 +93,9 @@ class ProfileRepository {
     }
 
     final r = TResult(
-        status: response['Status'], data: policyUrl, msg: response['Msg']);
+        status: response['Status'],
+        data: policyUrl,
+        msg: response['Msg'] ?? '');
     return r;
   }
 
@@ -102,7 +108,9 @@ class ProfileRepository {
     }
 
     final r = TResult(
-        status: response['Status'], data: policyUrl, msg: response['Msg']);
+        status: response['Status'],
+        data: policyUrl,
+        msg: response['Msg'] ?? '');
     return r;
   }
 }

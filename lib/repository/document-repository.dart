@@ -21,7 +21,9 @@ class DocumentRepository {
     }
 
     return TResult(
-        status: response['Status'], data: _documents, msg: response['Msg']);
+        status: response['Status'],
+        data: _documents,
+        msg: response['Msg'] ?? '');
   }
 
   Future<TResult> getUrlDocumentByID(UrlDocumentInput data) async {
@@ -31,7 +33,7 @@ class DocumentRepository {
     return TResult(
         status: response['Status'],
         data: response['Data'],
-        msg: response['Msg']);
+        msg: response['Msg'] ?? '');
   }
 
   Future<TResult> getDocumentByPersonalID(LibraryInput data) async {
@@ -47,7 +49,9 @@ class DocumentRepository {
     }
 
     return TResult(
-        status: response['Status'], data: _documents, msg: response['Msg']);
+        status: response['Status'],
+        data: _documents,
+        msg: response['Msg'] ?? '');
   }
 
   Future<IOWebSocketChannel> openProgressWebSocketChannel() async {

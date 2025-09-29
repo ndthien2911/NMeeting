@@ -93,6 +93,7 @@ class ApiProvider {
 
   dynamic _response(http.Response response) {
     log(response.request!.url.toString());
+    log(response.body);
     switch (response.statusCode) {
       case 200:
         var responseJson = json.decode(response.body.toString());

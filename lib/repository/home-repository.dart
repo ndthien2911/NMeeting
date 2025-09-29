@@ -22,7 +22,7 @@ class HomeRepository {
     return TResult(
         status: response['Status'],
         data: _meetingTodayList,
-        msg: response['Msg']);
+        msg: response['Msg'] ?? '');
   }
 
   Future<TResult> getMenuAppLayout(String userName) async {
@@ -38,6 +38,6 @@ class HomeRepository {
     return TResult(
         status: response['Status'],
         data: _menuAppLayoutList,
-        msg: response['Msg']);
+        msg: response['Msg'] ?? '');
   }
 }

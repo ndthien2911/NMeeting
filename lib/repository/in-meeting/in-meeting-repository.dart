@@ -27,7 +27,7 @@ class InMeetingRepository {
     final r = TResult(
         status: response['Status'],
         data: _inMeetingOutput,
-        msg: response['Msg']);
+        msg: response['Msg'] ?? '');
     return r;
   }
 
@@ -85,7 +85,7 @@ class InMeetingRepository {
     return TResult(
         status: response['Status'],
         data: _inMeetingOutput,
-        msg: response['Msg']);
+        msg: response['Msg'] ?? '');
   }
 
   Future<TResult> getMenuCalender(String personalID) async {
@@ -95,7 +95,7 @@ class InMeetingRepository {
     return TResult(
         status: response['Status'],
         data: response['Data'],
-        msg: response['Msg']);
+        msg: response['Msg'] ?? '');
   }
 
   Future<TResult> joinMeeting(InMeetingInput data) async {
@@ -166,7 +166,7 @@ class InMeetingRepository {
     return TResult(
         status: response['Status'],
         data: _joinMeetingOutput,
-        msg: response['Msg']);
+        msg: response['Msg'] ?? '');
   }
 
   Future<TResult> submitAbsent(InMeetingInput data) async {
@@ -174,7 +174,7 @@ class InMeetingRepository {
         await _provider.post(api.URL_SUBMIT_ABSENT, jsonEncode(data));
 
     return TResult(
-        status: response['Status'], data: null, msg: response['Msg']);
+        status: response['Status'], data: null, msg: response['Msg'] ?? '');
   }
 
   Future<TResult> addOrRemovePersonal(InMeetingInput data) async {
@@ -182,7 +182,7 @@ class InMeetingRepository {
         await _provider.post(api.URL_ADDREMOVE_PERSONAL, jsonEncode(data));
 
     return TResult(
-        status: response['Status'], data: null, msg: response['Msg']);
+        status: response['Status'], data: null, msg: response['Msg'] ?? '');
   }
 
   Future<TResult> getDocuments(DocumentMeetingDetailInput data) async {
@@ -198,7 +198,9 @@ class InMeetingRepository {
     }
 
     return TResult(
-        status: response['Status'], data: _documents, msg: response['Msg']);
+        status: response['Status'],
+        data: _documents,
+        msg: response['Msg'] ?? '');
   }
 
   // Future<TResult> getMemberRole(MemberRoleInput data) async {
@@ -208,7 +210,7 @@ class InMeetingRepository {
   //   return TResult(
   //       status: response['Status'],
   //       data: response['Data'],
-  //       msg: response['Msg']);
+  //       msg: response['Msg'] ?? '');
   // }
 
   // Future<IOWebSocketChannel> openStartEndMeetingWebSocketChannel() async {
@@ -226,7 +228,7 @@ class InMeetingRepository {
     return TResult(
         status: response['Status'],
         data: response['Data'],
-        msg: response['Msg']);
+        msg: response['Msg'] ?? '');
   }
 
   Future<TResult> getAssignList(UserMeetingInput data) async {
@@ -241,7 +243,9 @@ class InMeetingRepository {
     }
 
     final r = TResult(
-        status: response['Status'], data: _meetingUser, msg: response['Msg']);
+        status: response['Status'],
+        data: _meetingUser,
+        msg: response['Msg'] ?? '');
     return r;
   }
 
@@ -252,7 +256,7 @@ class InMeetingRepository {
     final r = TResult(
         status: response['Status'],
         data: response['Data'],
-        msg: response['Msg']);
+        msg: response['Msg'] ?? '');
     return r;
   }
 
@@ -294,6 +298,8 @@ class InMeetingRepository {
       );
     }
     return TResult(
-        status: response['Status'], data: _meetingReady, msg: response['Msg']);
+        status: response['Status'],
+        data: _meetingReady,
+        msg: response['Msg'] ?? '');
   }
 }

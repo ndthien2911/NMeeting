@@ -21,7 +21,7 @@ class CalendarRepository {
     final r = TResult(
         status: response['Status'],
         data: _eventByMonthOutput,
-        msg: response['Msg']);
+        msg: response['Msg'] ?? '');
     return r;
   }
 
@@ -39,7 +39,7 @@ class CalendarRepository {
     final r = TResult(
         status: response['Status'],
         data: _eventByDayOutput,
-        msg: response['Msg']);
+        msg: response['Msg'] ?? '');
     return r;
   }
 
@@ -61,7 +61,7 @@ class CalendarRepository {
     final r = TResult(
         status: response['Status'],
         data: _eventByDayOutput,
-        msg: response['Msg']);
+        msg: response['Msg'] ?? '');
     return r;
   }
 }
@@ -81,6 +81,8 @@ class UnitRepository {
     }
 
     return TResult(
-        status: response['Status'], data: _unitList, msg: response['Msg']);
+        status: response['Status'],
+        data: _unitList,
+        msg: response['Msg'] ?? '');
   }
 }

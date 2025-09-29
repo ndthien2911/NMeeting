@@ -16,7 +16,7 @@ class ConfigRepository {
           url: response['Data']['Url']);
     }
     return TResult(
-        status: response['Status'], data: _data, msg: response['Msg']);
+        status: response['Status'], data: _data, msg: response['Msg'] ?? '');
   }
 
   Future<TResult> getUnitUsed() async {
@@ -25,6 +25,6 @@ class ConfigRepository {
     return TResult(
         status: response['Status'],
         data: response['Data'],
-        msg: response['Msg']);
+        msg: response['Msg'] ?? '');
   }
 }

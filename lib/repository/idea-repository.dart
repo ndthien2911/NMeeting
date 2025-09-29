@@ -25,7 +25,7 @@ class IdeaRepository {
     return TResult(
         status: response['Status'],
         data: _startCheckResp,
-        msg: response['Msg']);
+        msg: response['Msg'] ?? '');
   }
 
   Future<TResult> sendRegist(IdeaInput data) async {
@@ -35,7 +35,7 @@ class IdeaRepository {
     return TResult(
         status: response['Status'],
         data: response['Data'],
-        msg: response['Msg']);
+        msg: response['Msg'] ?? '');
   }
 
   Future<TResult> registCheck(IdeaInput data) async {
@@ -50,7 +50,7 @@ class IdeaRepository {
     return TResult(
         status: response['Status'],
         data: _registCheckResp,
-        msg: response['Msg']);
+        msg: response['Msg'] ?? '');
   }
 
   Future<TResult> endIdea(ideaDetailID, description) async {
@@ -63,7 +63,7 @@ class IdeaRepository {
     final r = TResult(
         status: response['Status'],
         data: response['Data'],
-        msg: response['Msg']);
+        msg: response['Msg'] ?? '');
     return r;
   }
 
@@ -74,7 +74,7 @@ class IdeaRepository {
     final r = TResult(
         status: response['Status'],
         data: response['Data'],
-        msg: response['Msg']);
+        msg: response['Msg'] ?? '');
     return r;
   }
 

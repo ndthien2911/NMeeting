@@ -1406,19 +1406,19 @@ class _PageHomeState extends State<PageHome> {
   _onChoseMenu(String id) async {
     switch (id) {
       case 'Calendar':
-        // // final _menuCalenderList = await _inmeetingBloc.getMenuCalender();
-        // // List<String> _data = new List<String>.from(_menuCalenderList);
-        // final _unitBloc = new UnitBloc();
-        // final _searchList = await _unitBloc.getUnitList();
-        // final _returnData = await Navigator.push(
-        //     context,
-        //     MaterialPageRoute(
-        //         builder: (context) => PageCalendar(
-        //               inmeetingBloc: _inmeetingBloc,
-        //               unitBloc: _unitBloc,
-        //             )));
-        // _initData();
-        showToast('PageCalendar');
+        // final _menuCalenderList = await _inmeetingBloc.getMenuCalender();
+        // List<String> _data = new List<String>.from(_menuCalenderList);
+        final _unitBloc = new UnitBloc();
+        final _searchList = await _unitBloc.getUnitList();
+        final _returnData = await Navigator.push(
+            context,
+            MaterialPageRoute(
+                builder: (context) => PageCalendar(
+                      inmeetingBloc: _inmeetingBloc,
+                      unitBloc: _unitBloc,
+                    )));
+        _initData();
+        // showToast('PageCalendar');
         break;
       // case 'Meeting':
       //   final _returnData = await Navigator.push(

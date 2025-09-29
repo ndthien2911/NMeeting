@@ -71,7 +71,7 @@ class LoginRepository {
     final r = TResult(
         status: response['Status'],
         data: response['Data'],
-        msg: response['Msg']);
+        msg: response['Msg'] ?? '');
     return r;
   }
 
@@ -80,7 +80,7 @@ class LoginRepository {
     final r = TResult(
         status: response['Status'],
         data: response['Data'],
-        msg: response['Msg']);
+        msg: response['Msg'] ?? '');
     return r;
   }
 

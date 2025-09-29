@@ -20,7 +20,9 @@ class WattingApproveRepository {
     }
 
     return TResult(
-        status: response['Status'], data: _progress, msg: response['Msg']);
+        status: response['Status'],
+        data: _progress,
+        msg: response['Msg'] ?? '');
   }
 
   Future<TResult> changeMode(ChangeModeInput data) async {
@@ -36,7 +38,9 @@ class WattingApproveRepository {
     }
 
     return TResult(
-        status: response['Status'], data: _progress, msg: response['Msg']);
+        status: response['Status'],
+        data: _progress,
+        msg: response['Msg'] ?? '');
   }
 
   Future<TResult> deleteItem(DeleteInput data) async {
@@ -46,7 +50,7 @@ class WattingApproveRepository {
     return TResult(
         status: response['Status'],
         data: response['Data'],
-        msg: response['Msg']);
+        msg: response['Msg'] ?? '');
   }
 
   Future<TResult> rejectItem(RejectInput data) async {
@@ -56,6 +60,6 @@ class WattingApproveRepository {
     return TResult(
         status: response['Status'],
         data: response['Data'],
-        msg: response['Msg']);
+        msg: response['Msg'] ?? '');
   }
 }

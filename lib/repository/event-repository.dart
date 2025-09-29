@@ -21,7 +21,7 @@ class EventRepository {
     final r = TResult(
         status: response['Status'],
         data: _eventTagsOutput,
-        msg: response['Msg']);
+        msg: response['Msg'] ?? '');
     return r;
   }
 
@@ -38,7 +38,7 @@ class EventRepository {
     final r = TResult(
         status: response['Status'],
         data: _eventRemindersOutput,
-        msg: response['Msg']);
+        msg: response['Msg'] ?? '');
     return r;
   }
 
@@ -60,7 +60,9 @@ class EventRepository {
     }
 
     return TResult(
-        status: response['Status'], data: _outputObj, msg: response['Msg']);
+        status: response['Status'],
+        data: _outputObj,
+        msg: response['Msg'] ?? '');
   }
 
   Future<TResult> updateEvent(EventObj data) async {
@@ -81,7 +83,9 @@ class EventRepository {
     }
 
     return TResult(
-        status: response['Status'], data: _outputObj, msg: response['Msg']);
+        status: response['Status'],
+        data: _outputObj,
+        msg: response['Msg'] ?? '');
   }
 
   Future<TResult> getEventDetail(EventReq data) async {
@@ -106,7 +110,9 @@ class EventRepository {
     }
 
     return TResult(
-        status: response['Status'], data: _outputObj, msg: response['Msg']);
+        status: response['Status'],
+        data: _outputObj,
+        msg: response['Msg'] ?? '');
   }
 
   Future<TResult> deleteItem(DeleteInput data) async {
@@ -116,6 +122,6 @@ class EventRepository {
     return TResult(
         status: response['Status'],
         data: response['Data'],
-        msg: response['Msg']);
+        msg: response['Msg'] ?? '');
   }
 }

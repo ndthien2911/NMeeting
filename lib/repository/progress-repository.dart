@@ -44,7 +44,8 @@ class ProgressRepository {
 
     var r = ProgressIdea(progressOutput: _progress, idea: _idea);
 
-    return TResult(status: response['Status'], data: r, msg: response['Msg']);
+    return TResult(
+        status: response['Status'], data: r, msg: response['Msg'] ?? '');
   }
 
   Future<TResult> checkIsInMeeting(data) async {
@@ -59,7 +60,7 @@ class ProgressRepository {
     final r = TResult(
         status: response['Status'],
         data: response['Data'],
-        msg: response['Msg']);
+        msg: response['Msg'] ?? '');
     return r;
   }
 
@@ -78,7 +79,7 @@ class ProgressRepository {
     return TResult(
         status: response['Status'],
         data: _questionOutput,
-        msg: response['Msg']);
+        msg: response['Msg'] ?? '');
   }
 
   Future<TResult> onAnwserSelected(data) async {
@@ -88,7 +89,7 @@ class ProgressRepository {
     return TResult(
         status: response['Status'],
         data: response['Data'],
-        msg: response['Msg']);
+        msg: response['Msg'] ?? '');
   }
 
   Future<TResult> getBQResultByProblemId(QuestionResultInput data) async {
@@ -109,7 +110,7 @@ class ProgressRepository {
         questionResults: _questionOutput);
 
     return TResult(
-        status: response['Status'], data: _res, msg: response['Msg']);
+        status: response['Status'], data: _res, msg: response['Msg'] ?? '');
   }
 
   Future<TResult> sendRegist(IdeaInput data) async {
@@ -119,7 +120,7 @@ class ProgressRepository {
     return TResult(
         status: response['Status'],
         data: response['Data'],
-        msg: response['Msg']);
+        msg: response['Msg'] ?? '');
   }
 
   Future<IOWebSocketChannel> openProgressWebSocketChannel() async {

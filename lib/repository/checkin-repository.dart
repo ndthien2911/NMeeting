@@ -15,7 +15,7 @@ class CheckinRepository {
     return TResult(
         status: response['Status'],
         data: response['Data'],
-        msg: response['Msg']);
+        msg: response['Msg'] ?? '');
   }
 
   Future<TResult> checkinByQRCode(CheckinMember data) async {
@@ -25,7 +25,7 @@ class CheckinRepository {
     return TResult(
         status: response['Status'],
         data: response['Data'],
-        msg: response['Msg']);
+        msg: response['Msg'] ?? '');
   }
 
   Future<IOWebSocketChannel> wsCheckin() async {

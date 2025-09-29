@@ -10,6 +10,7 @@ import 'package:nmeeting/models/t-result.dart';
 import 'package:nmeeting/ui/common-widgets/common-widgets.dart';
 import 'package:nmeeting/ui/common-widgets/vnpt-progress-dialog.dart';
 import 'package:nmeeting/ui/home/page-home.dart';
+import 'package:nmeeting/ui/router/app-router.dart';
 import 'package:nmeeting/utilities/network-check.dart';
 import 'package:flutter/material.dart';
 import 'package:keyboard_actions/keyboard_actions.dart';
@@ -364,11 +365,8 @@ class _PageLoginState extends State<PageLogin> {
             if (res.status == 1) {
               prefs.setBool('isLoggedIn', true);
               Future.delayed(const Duration(milliseconds: 200)).then((_) {
-                Navigator.of(context).pushReplacement(
-                  MaterialPageRoute(
-                      builder: (_) => PageHome(),
-                      settings: const RouteSettings(name: '/Home')),
-                );
+                AppRouter.navigatorKey.currentState!
+                    .pushNamed(AppRouter.PAGE_HOME);
               });
             } else {
               showToast(res.msg);
