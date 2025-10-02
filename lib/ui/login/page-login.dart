@@ -364,7 +364,7 @@ class _PageLoginState extends State<PageLogin> {
             progress.hide();
             if (res.status == 1) {
               prefs.setBool('isLoggedIn', true);
-              Future.delayed(const Duration(milliseconds: 200)).then((_) {
+              Future.delayed(const Duration(milliseconds: 300)).then((_) {
                 AppRouter.navigatorKey.currentState!
                     .pushNamed(AppRouter.PAGE_HOME);
               });

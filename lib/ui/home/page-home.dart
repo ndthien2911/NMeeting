@@ -103,9 +103,10 @@ class _PageHomeState extends State<PageHome> {
 
     _initData();
 
-    _openCheckinWebSocketChannel();
-    _openLoginWebSocketChannel();
-    _openNotifyWebSocketChannel();
+    // tạm
+    // _openCheckinWebSocketChannel();
+    // _openLoginWebSocketChannel();
+    // _openNotifyWebSocketChannel();
   }
 
   openPage(Map<String, dynamic> message) {
